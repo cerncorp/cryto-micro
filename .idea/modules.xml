@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/auth-service/auth-service.iml" filepath="$PROJECT_DIR$/auth-service/auth-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/config-service/config-service.iml" filepath="$PROJECT_DIR$/config-service/config-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/crypto-service/crypto-service.iml" filepath="$PROJECT_DIR$/crypto-service/crypto-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cryto-micro.iml" filepath="$PROJECT_DIR$/.idea/cryto-micro.iml" />
       <module fileurl="file://$PROJECT_DIR$/currency-service/currency-service.iml" filepath="$PROJECT_DIR$/currency-service/currency-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/eureka-service/eureka-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/future-service/future-service.iml" filepath="$PROJECT_DIR$/future-service/future-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
     </modules>
   </component>
 </project>
