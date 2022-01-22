@@ -1,0 +1,9 @@
+
+GET http://localhost:8888/currencyservice/dev
+Accept: application/json
+
+###
+GET http://localhost:8888/cryptoservice/dev
+Accept: application/json
+
+###

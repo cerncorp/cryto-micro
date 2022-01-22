@@ -1,0 +1,4 @@
+GET http://localhost:8099/api/future/NQ=F
+Accept: application/json
+
+###

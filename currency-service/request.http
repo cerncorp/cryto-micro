@@ -1,0 +1,8 @@
+GET http://localhost:8088/api/currency/EUR=X
+Accept: application/json
+
+###
+GET https://query1.finance.yahoo.com/v7/finance/spark?range=1d&interval=5m&indicators=close&includeTimestamps=false&includePrePost=false&symbols=us
+Accept: application/json
+
+###

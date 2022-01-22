@@ -1,0 +1,4 @@
+GET http://localhost:8077/api/crypto/all
+Accept: application/json
+
+###
