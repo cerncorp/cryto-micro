@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <springProperty scope="context" name="authentication_service" source="spring.application.name" />
+
+    <!--  Log config for localhost  -->
+    <springProfile name="local" >
+        <property name="CONSOLE_LOG_PATTERN"
+            value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+        >
+            <appender name="flatConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                    <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+                    <charset>utf8</charset>
+                </encoder>
+
+
+            </appender>
+            <root level="INFO">
+                <appender-ref ref="flatConsoleAppender" />
+
+            </root>
+
+        </property>
+    </springProfile>
+
+
+    <!--  Log config for Docker Container  -->
+    <springProfile name="dev">
+        <appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+                <providers>
+                    <timestamp>
+                        <timeZone>UTC</timeZone>
+                    </timestamp>
+                    <version />
+                    <logLevel/>
+                    <message/>
+                    <loggerName/>
+                    <threadName/>
+                    <context/>
+                    <patterns>
+                        <omitEmptyFields>true</omitEmptyFields>
+                        <pattern>
+                            {
+                            "trace": {
+                                "trace_id": "%mdc{X-B3-TraceId}",
+                                "span_id": "%mdc{X-B3-SpanId}",
+                                "parent_span_id": "%mdc{X-B3-ParentSpanId}",
+                                "exportable": "%mdc{X-Span-Export}"
+                                }
+                            }
+                        </pattern>
+                    </patterns>
+                    <mdc>
+                        <excludeMdcName>traceId</excludeMdcName>
+                        <excludeMdcName>spanId</excludeMdcName>
+                        <excludeMdcName>parentId</excludeMdcName>
+                        <excludeMdcName>spanExportable</excludeMdcName>
+                        <excludeMdcName>X-B3-TraceId</excludeMdcName>
+                        <excludeMdcName>X-B3-SpanId</excludeMdcName>
+                        <excludeMdcName>X-B3-ParentSpanId</excludeMdcName>
+                        <excludeMdcName>X-Span-Export</excludeMdcName>
+                    </mdc>
+                    <stackTrace/>
+                </providers>
+
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="jsonConsoleAppender"/>
+        </root>
+    </springProfile>
+
+</configuration>

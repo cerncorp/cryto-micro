@@ -33,8 +33,12 @@ public class CurrencyService {
 //        ResponseEntity responseEntity = restTemplate.getForEntity(url, String.class);
 //
 //        return Optional.ofNullable(responseEntity);
+        log.info("Getting currency");
+
         return circuitBreakerFactory.create("slow").run(() -> {
             ResponseEntity responseEntity = restTemplate.getForEntity(url, String.class);
+            log.info(responseEntity.getBody().toString());
+
             return Optional.ofNullable(responseEntity);
         }, throwable -> Optional.ofNullable(fallback()));
     }

@@ -21,11 +21,13 @@ public class AuthController {
 
     @PostMapping("/token")
     public ResponseEntity getToken(@RequestBody TokenRequest request) {
+        log.info("Getting access token for user {}", request.getUsername());
         return authService.getAccessToken(request).orElseThrow(); // check if present
     }
 
     @PostMapping("/refresh")
     public ResponseEntity refreshToken(@RequestBody TokenRequest request) {
+        log.info("Refresh token for user {}", request.getUsername());
         return authService.refreshToken(request).orElseThrow();
     }
 }

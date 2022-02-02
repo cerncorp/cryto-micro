@@ -57,6 +57,7 @@ public class AuthService {
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(postParam, headers);
         ResponseEntity<String> responseEntity = restTemplate.exchange(tokenUrl, HttpMethod.POST, requestEntity, String.class);
 
+        log.info("User Found , now return access token for {}", tokenRequest.getUsername());
         return Optional.ofNullable(responseEntity);
     }
 }
